@@ -1,19 +1,19 @@
-import React from 'react';
-import { useField, useFormikContext } from 'formik';
+import React from 'react'
+import { useField, useFormikContext } from 'formik'
 import MuiTextField, {
   OutlinedTextFieldProps as MuiTextFieldProps,
-} from '@material-ui/core/TextField';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import IconButton from '@material-ui/core/IconButton';
-import VisibilityIcon from '@material-ui/icons/Visibility';
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+} from '@material-ui/core/TextField'
+import InputAdornment from '@material-ui/core/InputAdornment'
+import IconButton from '@material-ui/core/IconButton'
+import VisibilityIcon from '@material-ui/icons/Visibility'
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff'
 
 interface TextFieldProps extends MuiTextFieldProps {
-  id: string;
-  name: string;
-  showPassword?: boolean;
-  togglePassword?: () => void;
-  children?: any;
+  id: string
+  name: string
+  showPassword?: boolean
+  togglePassword?: () => void
+  children?: any
 }
 
 const TextField = ({
@@ -24,29 +24,29 @@ const TextField = ({
   disabled,
   ...props
 }: Omit<TextFieldProps, 'variant'>) => {
-  const [field, meta] = useField<string>(props.name);
-  const form = useFormikContext();
-  const [localShowPassword, setLocalShowPassword] = React.useState<boolean>(false);
-  const togglePassword = React.useCallback(() => setLocalShowPassword(isVisible => !isVisible), []);
+  const [field, meta] = useField<string>(props.name)
+  const form = useFormikContext()
+  const [localShowPassword, setLocalShowPassword] = React.useState<boolean>(false)
+  const togglePassword = React.useCallback(() => setLocalShowPassword(isVisible => !isVisible), [])
 
-  const isDisabled: boolean = disabled || form.isSubmitting;
-  const isTouched = meta.touched;
-  const fieldError = meta.error;
-  const showPassword = !isDisabled && (showPasswordProp ?? localShowPassword);
+  const isDisabled: boolean = disabled || form.isSubmitting
+  const isTouched = meta.touched
+  const fieldError = meta.error
+  const showPassword = !isDisabled && (showPasswordProp ?? localShowPassword)
 
   const type = React.useMemo(() => {
     if (props.type === 'password') {
       if (!showPassword || isDisabled) {
-        return 'password';
+        return 'password'
       } else {
-        return 'text';
+        return 'text'
       }
     }
 
-    return props.type || 'text';
-  }, [props.type, showPassword, isDisabled]);
-  const [initialFieldType] = React.useState(type);
-  const showPasswordAdornment = initialFieldType === 'password' || type === 'password';
+    return props.type || 'text'
+  }, [props.type, showPassword, isDisabled])
+  const [initialFieldType] = React.useState(type)
+  const showPasswordAdornment = initialFieldType === 'password' || type === 'password'
 
   return (
     <MuiTextField
@@ -89,8 +89,8 @@ const TextField = ({
     >
       {children}
     </MuiTextField>
-  );
-};
+  )
+}
 
 TextField.defaultProps = {
   InputLabelProps: {},
@@ -99,6 +99,6 @@ TextField.defaultProps = {
   children: null,
   disabled: false,
   select: false,
-};
+}
 
-export default React.memo(TextField);
+export default React.memo(TextField)

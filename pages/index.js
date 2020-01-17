@@ -13,6 +13,7 @@ const qrcodeAttributes = ['WIFI', 'T', 'S', 'P', 'H', ';']
 function HomePage() {
   const canvasEl = React.useRef(null)
   const handleSubmit = React.useCallback((values, { setSubmitting }) => {
+    let text = ''
 
     if (values.authType !== 'nopass') {
       if (values.isHidden) {
@@ -31,7 +32,7 @@ function HomePage() {
     if (canvasEl.current !== null) {
       QRCode.toCanvas(canvasEl.current, text, function(error) {
         if (error) {
-          throw error;
+          throw error
         }
       })
     } else {
@@ -39,7 +40,7 @@ function HomePage() {
     }
 
     setSubmitting(false)
-  });
+  })
 
   return (
     <Container maxWidth="xs">
@@ -54,11 +55,7 @@ function HomePage() {
       >
         {({ values }) => (
           <Form>
-            <TextField
-              name="ssid"
-              label="Wi-Fi Network Name"
-              fullWidth
-            />
+            <TextField name="ssid" label="Wi-Fi Network Name" fullWidth />
             <ButtonGroup
               name="authType"
               margin="normal"
@@ -70,12 +67,7 @@ function HomePage() {
               ]}
             />
             {values.authType !== 'nopass' && (
-              <TextField
-                name="password"
-                label="Wi-Fi Network Password"
-                type="password"
-                fullWidth
-              />
+              <TextField name="password" label="Wi-Fi Network Password" type="password" fullWidth />
             )}
             <Checkbox name="isHidden" id="is-hidden-network" label="Is Hidden Network" />
             <Button variant="contained" color="primary" type="submit" size="small">

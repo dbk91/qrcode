@@ -5,9 +5,9 @@ import FormGroup from '@material-ui/core/FormGroup'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 
 interface CheckboxProps {
-  id: string;
-  name: string;
-  label: string;
+  id: string
+  name: string
+  label: string
 }
 
 const Checkbox = (props: CheckboxProps) => {

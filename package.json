@@ -27,7 +27,7 @@
     "typescript": "^3.7.4"
   },
   "lint-staged": {
-    "{pages|components}/**/*.{js,jsx,ts,tsx}": [
+    "{pages,components}/**/*.{js,jsx,ts,tsx}": [
       "prettier --write",
       "git add"
     ]
