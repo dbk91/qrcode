@@ -4,16 +4,9 @@ import MuiButtonGroup from '@material-ui/core/ButtonGroup'
 import Button from '@material-ui/core/Button'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 
-const useStyles = makeStyles({
-  selected: {
-    color: 'tomato',
-  },
-})
-
 const ButtonGroup = ({ name, options, ...otherProps }) => {
   const [field, meta, helpers] = useField<string>(name)
   const isSelected = v => v === field.value
-  const classes = useStyles(otherProps)
 
   return (
     <MuiButtonGroup size="small" {...otherProps}>
