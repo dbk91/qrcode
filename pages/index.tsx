@@ -40,7 +40,7 @@ function HomePage() {
     }
 
     setSubmitting(false)
-  })
+  }, [])
 
   return (
     <Container maxWidth="xs">
@@ -55,7 +55,7 @@ function HomePage() {
       >
         {({ values }) => (
           <Form>
-            <TextField name="ssid" label="Wi-Fi Network Name" fullWidth />
+            <TextField id="ssid" name="ssid" label="Wi-Fi Network Name" fullWidth />
             <ButtonGroup
               name="authType"
               margin="normal"
@@ -67,7 +67,13 @@ function HomePage() {
               ]}
             />
             {values.authType !== 'nopass' && (
-              <TextField name="password" label="Wi-Fi Network Password" type="password" fullWidth />
+              <TextField
+                id="password"
+                name="password"
+                label="Wi-Fi Network Password"
+                type="password"
+                fullWidth
+              />
             )}
             <Checkbox name="isHidden" id="is-hidden-network" label="Is Hidden Network" />
             <Button variant="contained" color="primary" type="submit" size="small">
