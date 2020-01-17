@@ -1,33 +1,23 @@
 import React from 'react'
-import QRCode from 'qrcode'
-import { Formik, Form } from 'formik'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
+import Box from '@material-ui/core/Box'
 
 import WifiForm from '../components/WifiForm'
+import QRCodeCanvas from '../components/QRCodeCanvas'
 
 function HomePage() {
-  const canvasEl = React.useRef(null)
-  const handleSuccess = React.useCallback(text => {
-    if (canvasEl.current !== null) {
-      QRCode.toCanvas(canvasEl.current, text, function(error) {
-        if (error) {
-          throw error
-        }
-      })
-    } else {
-      throw new Error('Oops')
-    }
-  }, [])
+  const [qrCodeText, setQrCodeText] = React.useState<string>('')
 
   return (
     <Container maxWidth="sm">
       <Grid container>
         <Grid item xs={12}>
-          <WifiForm onSuccess={handleSuccess} />
+          <WifiForm onSuccess={setQrCodeText} />
         </Grid>
+        <Box m={2} />
         <Grid item xs={12}>
-          <canvas ref={canvasEl} />
+          <QRCodeCanvas text={qrCodeText} />
         </Grid>
       </Grid>
     </Container>
