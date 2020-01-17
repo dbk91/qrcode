@@ -13,11 +13,11 @@ function HomePage() {
     <Container maxWidth="sm">
       <Grid container>
         <Grid item xs={12}>
-          <WifiForm onSuccess={setQrCodeText} />
+          <QRCodeCanvas text={qrCodeText} />
         </Grid>
         <Box m={2} />
         <Grid item xs={12}>
-          <QRCodeCanvas text={qrCodeText} />
+          <WifiForm onSuccess={setQrCodeText} />
         </Grid>
       </Grid>
     </Container>

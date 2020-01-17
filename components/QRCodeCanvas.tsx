@@ -36,26 +36,36 @@ function QRCodeCanvas({ text }: QRCodeCanvasProps) {
         <canvas ref={canvasEl} />
       </Grid>
       <Grid item xs={6}>
-        <Tooltip title={isDisabled ? '' : 'Print QR Code'}>
-          <Fab size="small" disabled={isDisabled}>
-            <PrintIcon />
-          </Fab>
-        </Tooltip>
-        <Tooltip title={isDisabled ? '' : 'Export QR Code as Image'}>
-          <Fab size="small" disabled={isDisabled}>
-            <ImageIcon />
-          </Fab>
-        </Tooltip>
-        <Tooltip title={isDisabled ? '' : 'Save QR Code to Browser'}>
-          <Fab size="small" disabled={isDisabled}>
-            <SaveIcon />
-          </Fab>
-        </Tooltip>
-        <Tooltip title={isDisabled ? '' : 'Copy QR Code Plaintext'}>
-          <Fab size="small" disabled={isDisabled}>
-            <TextFormat />
-          </Fab>
-        </Tooltip>
+        <Grid container>
+          <Grid item xs={6}>
+            <Tooltip title={isDisabled ? '' : 'Print QR Code'}>
+              <Fab size="small" disabled={isDisabled}>
+                <PrintIcon />
+              </Fab>
+            </Tooltip>
+          </Grid>
+          <Grid item xs={6}>
+            <Tooltip title={isDisabled ? '' : 'Export QR Code as Image'}>
+              <Fab size="small" disabled={isDisabled}>
+                <ImageIcon />
+              </Fab>
+            </Tooltip>
+          </Grid>
+          <Grid item xs={6}>
+            <Tooltip title={isDisabled ? '' : 'Save QR Code to Browser'}>
+              <Fab size="small" disabled={isDisabled}>
+                <SaveIcon />
+              </Fab>
+            </Tooltip>
+          </Grid>
+          <Grid item xs={6}>
+            <Tooltip title={isDisabled ? '' : 'Copy QR Code Plaintext'}>
+              <Fab size="small" disabled={isDisabled}>
+                <TextFormat />
+              </Fab>
+            </Tooltip>
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   )
