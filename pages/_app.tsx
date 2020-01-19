@@ -2,11 +2,11 @@ import React from 'react'
 import App from 'next/app'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Box from '@material-ui/core/Box'
 import IconButton from '@material-ui/core/IconButton'
 import Link from '@material-ui/core/Link'
 import { ThemeProvider } from '@material-ui/core/styles'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import GithubIcon from '@material-ui/icons/Github'
 
@@ -49,24 +49,21 @@ const createTheme = (type: ThemeType) =>
     },
   })
 
+const useStyles = makeStyles(theme => ({
+  toolbar: {
+    flexGrow: 1,
+  },
+}))
+
 function MyApp({ Component, pageProps }) {
   const theme = React.useMemo(() => createTheme(ThemeType.LIGHT), [])
-  const [padding, setPadding] = React.useState(0)
-  const matches = useMediaQuery(theme.breakpoints.up('sm'))
-  const measureAppBar = React.useCallback(
-    node => {
-      if (node) {
-        setPadding(node.clientHeight + 8)
-      }
-    },
-    [matches],
-  )
+  const classes = useStyles(pageProps)
 
   return (
     <ThemeProvider theme={theme}>
-      <AppBar innerRef={measureAppBar} elevation={0}>
+      <AppBar position="static" color="inherit" elevation={0}>
         <Toolbar>
-          <Box display="flex" flexGrow={1} />
+          <div className={classes.toolbar} />
           <Link
             href="https://github.com/dbk91/qrcode"
             target="_blank"
@@ -79,7 +76,6 @@ function MyApp({ Component, pageProps }) {
           </Link>
         </Toolbar>
       </AppBar>
-      <Box m={`${padding}px`} />
       <Component {...pageProps} />
     </ThemeProvider>
   )
