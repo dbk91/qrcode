@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, Form } from 'formik'
+import { Formik, Form, FormikErrors } from 'formik'
 import QRCode from 'qrcode'
 import Button from '@material-ui/core/Button'
 
@@ -9,6 +9,34 @@ import Checkbox from '../components/Checkbox'
 
 interface WifiFormProps {
   onSuccess: (text: string) => void
+}
+
+enum AuthType {
+  WPA = 'WPA',
+  WEP = 'WEP',
+  NOPASS = 'nopass',
+}
+
+interface WifiFormValues {
+  ssid: string
+  password: string
+  authType: AuthType
+}
+
+const validate = values => {
+  const errors: FormikErrors<WifiFormValues> = {}
+
+  if (!values.ssid) {
+    errors.ssid = 'A network name is required'
+  }
+
+  if (values.authType !== 'nopass') {
+    if (!values.password) {
+      errors.password = 'The network password is required'
+    }
+  }
+
+  return errors
 }
 
 function WifiForm(props: WifiFormProps) {
@@ -41,6 +69,7 @@ function WifiForm(props: WifiFormProps) {
         authType: 'WPA',
         isHidden: false,
       }}
+      validate={validate}
       onSubmit={handleSubmit}
     >
       {({ values }) => (
