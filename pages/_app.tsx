@@ -5,49 +5,11 @@ import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Link from '@material-ui/core/Link'
 import { ThemeProvider } from '@material-ui/core/styles'
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import GithubIcon from '@material-ui/icons/Github'
 
-enum ThemeType {
-  LIGHT = 'light',
-  DARK = 'dark',
-}
-
-const createTheme = (type: ThemeType) =>
-  createMuiTheme({
-    palette: {
-      type,
-    },
-    typography: {
-      fontFamily: [
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(','),
-    },
-    overrides: {
-      MuiButton: {
-        label: {
-          textTransform: 'capitalize',
-        },
-      },
-      MuiTab: {
-        root: {
-          textTransform: 'capitalize',
-          textAlign: 'left',
-        },
-      },
-    },
-  })
+import createTheme, { ThemeType } from '../src/theme'
 
 const useStyles = makeStyles(theme => ({
   toolbar: {
