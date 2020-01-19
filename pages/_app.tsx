@@ -5,6 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Link from '@material-ui/core/Link'
 import { ThemeProvider } from '@material-ui/core/styles'
+import CssBaseline from '@material-ui/core/CssBaseline'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import GithubIcon from '@material-ui/icons/Github'
@@ -22,24 +23,27 @@ function MyApp({ Component, pageProps }) {
   const classes = useStyles(pageProps)
 
   return (
-    <ThemeProvider theme={theme}>
-      <AppBar position="static" color="inherit" elevation={0}>
-        <Toolbar>
-          <div className={classes.toolbar} />
-          <Link
-            href="https://github.com/dbk91/qrcode"
-            target="_blank"
-            rel="noopener"
-            component={IconButton}
-            edge="end"
-            color="inherit"
-          >
-            <GithubIcon />
-          </Link>
-        </Toolbar>
-      </AppBar>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <AppBar position="static" color="inherit" elevation={0}>
+          <Toolbar>
+            <div className={classes.toolbar} />
+            <Link
+              href="https://github.com/dbk91/qrcode"
+              target="_blank"
+              rel="noopener"
+              component={IconButton}
+              edge="end"
+              color="inherit"
+            >
+              <GithubIcon />
+            </Link>
+          </Toolbar>
+        </AppBar>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </>
   )
 }
 
