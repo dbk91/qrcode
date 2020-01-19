@@ -12,6 +12,9 @@ import GithubIcon from '@material-ui/icons/Github'
 import createTheme, { ThemeType } from '../src/theme'
 
 const useStyles = makeStyles(theme => ({
+  appBar: {
+    marginBottom: theme.spacing(2),
+  },
   toolbar: {
     flexGrow: 1,
   },
@@ -32,7 +35,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AppBar position="static" color="inherit" elevation={0}>
+        <AppBar position="static" color="inherit" elevation={0} className={classes.appBar}>
           <Toolbar>
             <div className={classes.toolbar} />
             <Link

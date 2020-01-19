@@ -2,6 +2,7 @@ import React from 'react'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import Divider from '@material-ui/core/Divider'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 
 import WifiForm from '../components/WifiForm'
@@ -11,8 +12,8 @@ const useStyles = makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
   },
-  qrCodeCanvas: {
-    backgroundColor: theme.palette.background.default,
+  divider: {
+    margin: theme.spacing(4, 0),
   },
 }))
 
@@ -23,14 +24,9 @@ function HomePage(props) {
   return (
     <Container maxWidth="xs">
       <Paper className={classes.paper}>
-        <Grid container>
-          <Grid item xs={12}>
-            <WifiForm onSuccess={setQrCodeText} />
-          </Grid>
-          <Grid item xs={12} className={classes.qrCodeCanvas}>
-            <QRCodeCanvas text={qrCodeText} />
-          </Grid>
-        </Grid>
+        <WifiForm onSuccess={setQrCodeText} />
+        <Divider variant="middle" className={classes.divider} />
+        <QRCodeCanvas text={qrCodeText} />
       </Paper>
     </Container>
   )

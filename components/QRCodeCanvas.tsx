@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Fab from '@material-ui/core/Fab'
 import Tooltip from '@material-ui/core/Tooltip'
+import Box from '@material-ui/core/Box'
 import PrintIcon from '@material-ui/icons/Print'
 import ImageIcon from '@material-ui/icons/Image'
 import SaveIcon from '@material-ui/icons/Save'
@@ -32,7 +33,9 @@ function QRCodeCanvas({ text }: QRCodeCanvasProps) {
   return (
     <Grid container>
       <Grid item xs={12}>
-        <canvas ref={canvasEl} />
+        <Box textAlign="center">
+          <canvas ref={canvasEl} />
+        </Box>
       </Grid>
       <Grid item xs={12}>
         <Grid container justify="space-around" spacing={2}>
