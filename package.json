@@ -3,8 +3,13 @@
   "version": "0.0.1",
   "description": "A static site that generates useful QR codes",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dbk91/qrcode.git"
+  },
   "author": "Daniel Kelly",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "dev": "next",
     "build": "next build",
