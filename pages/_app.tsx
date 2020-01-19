@@ -1,5 +1,4 @@
 import React from 'react'
-import App from 'next/app'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
@@ -21,6 +20,13 @@ const useStyles = makeStyles(theme => ({
 function MyApp({ Component, pageProps }) {
   const theme = React.useMemo(() => createTheme(ThemeType.LIGHT), [])
   const classes = useStyles(pageProps)
+
+  React.useEffect(() => {
+    const jssStyles = document.querySelector('#jss-server-side')
+    if (jssStyles) {
+      jssStyles.parentElement.removeChild(jssStyles)
+    }
+  }, [])
 
   return (
     <>
