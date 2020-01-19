@@ -80,9 +80,9 @@ function WifiForm(props: WifiFormProps) {
             margin="normal"
             fullWidth
             options={[
-              { value: 'nopass', label: 'None' },
-              { value: 'WEP', label: 'WEP' },
-              { value: 'WPA', label: 'WPA' },
+              { value: AuthType.NOPASS, label: 'None' },
+              { value: AuthType.WEP, label: 'WEP' },
+              { value: AuthType.WPA, label: 'WPA/WPA2' },
             ]}
           />
           {values.authType !== 'nopass' && (
