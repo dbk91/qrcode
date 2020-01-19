@@ -70,6 +70,7 @@ function MyApp({ Component, pageProps }) {
           <Link
             href="https://github.com/dbk91/qrcode"
             target="_blank"
+            rel="noopener"
             component={IconButton}
             edge="end"
             color="inherit"
