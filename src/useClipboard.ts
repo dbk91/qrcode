@@ -12,7 +12,6 @@ const useClipboard = (text?: string) => {
     // Optimistically assume it's supported on server render
     return true
   }, [])
-  console.log(text)
 
   React.useEffect(
     () => {

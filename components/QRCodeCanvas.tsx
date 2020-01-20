@@ -1,5 +1,6 @@
 import React from 'react'
 import QRCode from 'qrcode'
+import { saveAs } from 'file-saver'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import Fab from '@material-ui/core/Fab'
@@ -20,6 +21,13 @@ function QRCodeCanvas({ text }: QRCodeCanvasProps) {
   const canvasEl = React.useRef(null)
   const isDisabled = text === ''
   const [setSource, setAction, clipboardIsSupported] = useClipboard(text)
+  const downloadFile = React.useCallback(() => {
+    QRCode.toDataURL(text, { type: 'image/png' }, function(error, url) {
+      if (error) throw error
+
+      saveAs(url, 'qr-code.png')
+    })
+  }, [text])
 
   React.useEffect(() => {
     if (canvasEl.current === null) {
@@ -52,7 +60,7 @@ function QRCodeCanvas({ text }: QRCodeCanvasProps) {
           </Grid>
           <Grid item>
             <Tooltip title={isDisabled ? '' : 'Export QR Code as Image'}>
-              <Fab size="small" disabled={isDisabled}>
+              <Fab size="small" disabled={isDisabled} onClick={downloadFile}>
                 <ImageIcon />
               </Fab>
             </Tooltip>
@@ -66,8 +74,8 @@ function QRCodeCanvas({ text }: QRCodeCanvasProps) {
           </Grid>
           {clipboardIsSupported && (
             <Grid item>
-              <Tooltip title={isDisabled ? '' : 'Copy QR Code Plaintext'}>
-                <Fab size="small" disabled={isDisabled} innerRef={setAction}>
+              <Tooltip title={isDisabled ? '' : 'Copy QR Code Plaintext'} innerRef={setAction}>
+                <Fab size="small" disabled={isDisabled}>
                   <TextFormat />
                 </Fab>
               </Tooltip>
