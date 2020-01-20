@@ -35,6 +35,17 @@ function MyApp({ Component, pageProps }) {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <style global jsx>{`
+          @media print {
+            * {
+              visibility: hidden;
+            }
+
+            #qrcode-canvas {
+              visibility: visible;
+            }
+          }
+        `}</style>
         <AppBar position="static" color="inherit" elevation={0} className={classes.appBar}>
           <Toolbar>
             <div className={classes.toolbar} />

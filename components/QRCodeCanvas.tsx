@@ -28,6 +28,7 @@ function QRCodeCanvas({ text }: QRCodeCanvasProps) {
       saveAs(url, 'qr-code.png')
     })
   }, [text])
+  const printPage = React.useCallback(() => void window.print(), [])
 
   React.useEffect(() => {
     if (canvasEl.current === null) {
@@ -45,14 +46,14 @@ function QRCodeCanvas({ text }: QRCodeCanvasProps) {
     <Grid container>
       <Grid item xs={12}>
         <Box textAlign="center">
-          <canvas ref={canvasEl} />
+          <canvas id="qrcode-canvas" ref={canvasEl} />
           <span ref={setSource} />
         </Box>
       </Grid>
       <Grid item xs={12}>
         <Grid container justify="space-around" spacing={2}>
           <Grid item>
-            <Tooltip title={isDisabled ? '' : 'Print QR Code'}>
+            <Tooltip title={isDisabled ? '' : 'Print QR Code'} onClick={printPage}>
               <Fab size="small" disabled={isDisabled}>
                 <PrintIcon />
               </Fab>
