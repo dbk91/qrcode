@@ -10,6 +10,8 @@ import ImageIcon from '@material-ui/icons/Image'
 import SaveIcon from '@material-ui/icons/Save'
 import TextFormat from '@material-ui/icons/TextFormat'
 
+import useClipboard from '../src/useClipboard'
+
 interface QRCodeCanvasProps {
   text: string
 }
@@ -17,6 +19,7 @@ interface QRCodeCanvasProps {
 function QRCodeCanvas({ text }: QRCodeCanvasProps) {
   const canvasEl = React.useRef(null)
   const isDisabled = text === ''
+  const [setSource, setAction, clipboardIsSupported] = useClipboard(text)
 
   React.useEffect(() => {
     if (canvasEl.current === null) {
@@ -35,6 +38,7 @@ function QRCodeCanvas({ text }: QRCodeCanvasProps) {
       <Grid item xs={12}>
         <Box textAlign="center">
           <canvas ref={canvasEl} />
+          <span ref={setSource} />
         </Box>
       </Grid>
       <Grid item xs={12}>
@@ -60,13 +64,15 @@ function QRCodeCanvas({ text }: QRCodeCanvasProps) {
               </Fab>
             </Tooltip>
           </Grid>
-          <Grid item>
-            <Tooltip title={isDisabled ? '' : 'Copy QR Code Plaintext'}>
-              <Fab size="small" disabled={isDisabled}>
-                <TextFormat />
-              </Fab>
-            </Tooltip>
-          </Grid>
+          {clipboardIsSupported && (
+            <Grid item>
+              <Tooltip title={isDisabled ? '' : 'Copy QR Code Plaintext'}>
+                <Fab size="small" disabled={isDisabled} innerRef={setAction}>
+                  <TextFormat />
+                </Fab>
+              </Tooltip>
+            </Grid>
+          )}
         </Grid>
       </Grid>
     </Grid>
