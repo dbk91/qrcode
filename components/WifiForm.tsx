@@ -74,7 +74,7 @@ function WifiForm(props: WifiFormProps) {
     >
       {({ values }) => (
         <Form>
-          <TextField id="ssid" name="ssid" label="Wi-Fi Network Name" fullWidth />
+          <TextField id="ssid" name="ssid" label="Wi-Fi Network Name" fullWidth autoFocus />
           <ButtonGroup
             name="authType"
             margin="normal"
