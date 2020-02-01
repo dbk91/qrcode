@@ -51,7 +51,7 @@ function QRCodeCanvas({ text }: QRCodeCanvasProps) {
         </Box>
       </Grid>
       <Grid item xs={12}>
-        <Grid container justify="space-around" spacing={2}>
+        <Grid container justify="center" spacing={2}>
           <Grid item>
             <Tooltip title={isDisabled ? '' : 'Print QR Code'} onClick={printPage}>
               <Fab size="small" disabled={isDisabled}>

@@ -88,7 +88,13 @@ function WifiForm(props: WifiFormProps) {
             />
           )}
           <Checkbox name="isHidden" id="is-hidden-network" label="Is Hidden Network" />
-          <Button variant="contained" color="primary" type="submit" size="small">
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            size="small"
+            style={{ float: 'right' }}
+          >
             Generate QRCode
           </Button>
         </Form>
