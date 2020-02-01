@@ -41,21 +41,14 @@ const validate = values => {
 
 function WifiForm(props: WifiFormProps) {
   const handleSubmit = React.useCallback((values, { setSubmitting }) => {
-    let text = ''
-
-    if (values.authType !== 'nopass') {
-      if (values.isHidden) {
-        text = `WIFI:T:${values.authType};S:${values.ssid};P:${values.password};H:true;`
-      } else {
-        text = `WIFI:T:${values.authType};S:${values.ssid};P:${values.password};;`
-      }
-    } else {
-      if (values.isHidden) {
-        text = `WIFI:T:${values.authType};S:${values.ssid};H:true;`
-      } else {
-        text = `WIFI:T:${values.authType};S:${values.ssid};;`
-      }
-    }
+    const text = [
+      'WIFI:',
+      `T:${values.authType};`,
+      `S:${values.ssid};`,
+      values.authType === 'nopass' ? '' : `P:${values.password};`,
+      values.isHidden ? 'H:true;' : '',
+      ';',
+    ].join('')
 
     props.onSuccess(text)
     setSubmitting(false)
