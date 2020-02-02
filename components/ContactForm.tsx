@@ -78,7 +78,13 @@ function ContactForm(props: ContactFormProps) {
               <TextField id="address" name="address" label="Address" fullWidth multiline rows={4} />
             </Grid>
           </Grid>
-          <Button variant="contained" color="primary" type="submit" size="small">
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            size="small"
+            style={{ float: 'right' }}
+          >
             Generate QRCode
           </Button>
         </Form>
