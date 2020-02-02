@@ -20,12 +20,11 @@ function ContactForm(props: ContactFormProps) {
       'VERSION:3.0',
       `N:${values.lastName};${values.firstName};;;`,
       `FN:${values.firstName} ${values.lastName}`,
-      `TITLE:${values.title}`,
-      `ORG:${values.company}`,
-      `TEL;WORK;VOICE:${values.phone}`,
-      `EMAIL;TYPE=WORK:${values.email}`,
-      `URL;TYPE=Homepage:${values.homepage}`,
-      `ADR;TYPE=WORK:${values.address.split('\n').join(';')};;`,
+      values.title ? `TITLE:${values.title}` : '',
+      values.company ? `ORG:${values.company}` : '',
+      values.phone ? `TEL;WORK;VOICE:${values.phone}` : '',
+      values.email ? `EMAIL;TYPE=WORK:${values.email}` : '',
+      values.address ? `ADR;TYPE=WORK:${values.address.split('\n').join(';')};;` : '',
       'END:VCARD',
     ].join('\n')
 
