@@ -1,13 +1,10 @@
 import React from 'react'
 
+import PageLayout from '../components/PageLayout'
 import WifiForm from '../components/WifiForm'
 
-interface HomePageProps {
-  setQrCodeText: () => void
-}
-
-const HomePage = (props: HomePageProps) => {
-  return <WifiForm onSuccess={props.setQrCodeText} />
+const HomePage = () => {
+  return <PageLayout render={({ setQrCodeText }) => <WifiForm onSuccess={setQrCodeText} />} />
 }
 
 export default HomePage

@@ -1,13 +1,10 @@
 import React from 'react'
 
+import PageLayout from '../components/PageLayout'
 import ContactForm from '../components/ContactForm'
 
-interface ContactPageProps {
-  setQrCodeText: () => void
-}
-
-function ContactPage(props: ContactPageProps) {
-  return <ContactForm onSuccess={props.setQrCodeText} />
+function ContactPage() {
+  return <PageLayout render={({ setQrCodeText }) => <ContactForm onSuccess={setQrCodeText} />} />
 }
 
 export default ContactPage

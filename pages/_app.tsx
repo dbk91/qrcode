@@ -12,7 +12,6 @@ import GithubIcon from '@material-ui/icons/Github'
 import LightThemeIcon from '@material-ui/icons/Brightness7'
 import DarkThemeIcon from '@material-ui/icons/Brightness4'
 
-import PageLayout from '../components/PageLayout'
 import createTheme, { ThemeType } from '../src/theme'
 import useLocalStorage from '../src/useLocalStorage'
 import './app.css'
@@ -67,9 +66,7 @@ function MyApp({ Component, pageProps }) {
           </Link>
         </Toolbar>
       </AppBar>
-      <PageLayout
-        render={({ setQrCodeText }) => <Component {...pageProps} setQrCodeText={setQrCodeText} />}
-      />
+      <Component {...pageProps} />
     </ThemeProvider>
   )
 }
