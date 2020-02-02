@@ -11,7 +11,7 @@ import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import NoSsr from '@material-ui/core/NoSsr'
-import GithubIcon from '@material-ui/icons/Github'
+import GithubIcon from '@material-ui/icons/GitHub'
 import LightThemeIcon from '@material-ui/icons/Brightness7'
 import DarkThemeIcon from '@material-ui/icons/Brightness4'
 
