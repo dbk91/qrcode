@@ -1,9 +1,12 @@
 import React from 'react'
+import Router, { useRouter } from 'next/router'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import makeStyles from '@material-ui/core/styles/makeStyles'
@@ -17,7 +20,7 @@ import useLocalStorage from '../src/useLocalStorage'
 import './app.css'
 
 const useStyles = makeStyles(theme => ({
-  appBar: {
+  tabs: {
     marginBottom: theme.spacing(2),
   },
   toolbar: {
@@ -30,6 +33,12 @@ function MyApp({ Component, pageProps }) {
   const theme = React.useMemo(() => createTheme(themeType), [themeType])
   const classes = useStyles(pageProps)
 
+  const router = useRouter()
+  const onTabChange = React.useCallback((event, value) => {
+    event.preventDefault()
+    Router.push(value)
+  }, [])
+
   React.useEffect(() => {
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles) {
@@ -40,7 +49,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <AppBar position="static" color="inherit" elevation={0} className={classes.appBar}>
+      <AppBar position="static" color="inherit" elevation={0}>
         <Toolbar>
           <Typography variant="h6">QR Code Generator</Typography>
           <div className={classes.toolbar} />
@@ -66,6 +75,16 @@ function MyApp({ Component, pageProps }) {
           </Link>
         </Toolbar>
       </AppBar>
+      <Tabs
+        centered
+        indicatorColor="primary"
+        value={router.pathname}
+        onChange={onTabChange}
+        className={classes.tabs}
+      >
+        <Tab label="Wi-Fi Network" value="/" />
+        <Tab label="Contact Card" value="/contact" />
+      </Tabs>
       <Component {...pageProps} />
     </ThemeProvider>
   )

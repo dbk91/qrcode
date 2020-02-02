@@ -9,6 +9,10 @@ const createTheme = (type: ThemeType) =>
   createMuiTheme({
     palette: {
       type,
+      primary: {
+        main: '#23cece',
+        contrastText: '#ffffff',
+      },
     },
     typography: {
       fontFamily: [
