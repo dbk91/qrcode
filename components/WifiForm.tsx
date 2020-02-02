@@ -7,6 +7,7 @@ import TextField from '../components/TextField'
 import ButtonGroup from '../components/ButtonGroup'
 import Checkbox from '../components/Checkbox'
 import useStyles from './SubmitButton.styles'
+import escapeString from '../src/escapeString'
 
 interface WifiFormProps {
   onSuccess: (text: string) => void
@@ -45,7 +46,7 @@ function WifiForm(props: WifiFormProps) {
     const text = [
       'WIFI:',
       `T:${values.authType};`,
-      `S:${values.ssid};`,
+      `S:${escapeString(values.ssid)};`,
       values.authType === 'nopass' ? '' : `P:${values.password};`,
       values.isHidden ? 'H:true;' : '',
       ';',
