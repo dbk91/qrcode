@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button'
 import TextField from '../components/TextField'
 import ButtonGroup from '../components/ButtonGroup'
 import Checkbox from '../components/Checkbox'
+import useStyles from './SubmitButton.styles'
 
 interface WifiFormProps {
   onSuccess: (text: string) => void
@@ -53,6 +54,7 @@ function WifiForm(props: WifiFormProps) {
     props.onSuccess(text)
     setSubmitting(false)
   }, [])
+  const classes = useStyles(props)
 
   return (
     <Formik
@@ -93,7 +95,7 @@ function WifiForm(props: WifiFormProps) {
             color="primary"
             type="submit"
             size="small"
-            style={{ float: 'right' }}
+            className={classes.submitButton}
           >
             Generate QRCode
           </Button>

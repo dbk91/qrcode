@@ -7,6 +7,7 @@ import Grid from '@material-ui/core/Grid'
 import TextField from '../components/TextField'
 import ButtonGroup from '../components/ButtonGroup'
 import Checkbox from '../components/Checkbox'
+import useStyles from './SubmitButton.styles'
 
 interface ContactFormProps {
   onSuccess: (text: string) => void
@@ -31,6 +32,7 @@ function ContactForm(props: ContactFormProps) {
     props.onSuccess(text)
     setSubmitting(false)
   }, [])
+  const classes = useStyles(props)
 
   return (
     <Formik
@@ -82,7 +84,7 @@ function ContactForm(props: ContactFormProps) {
             color="primary"
             type="submit"
             size="small"
-            style={{ float: 'right' }}
+            className={classes.submitButton}
           >
             Generate QRCode
           </Button>

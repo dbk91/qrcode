@@ -3,6 +3,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Divider from '@material-ui/core/Divider'
+import Hidden from '@material-ui/core/Hidden'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 
 import QRCodeCanvas from './QRCodeCanvas'
@@ -13,8 +14,14 @@ const useStyles = makeStyles(theme => ({
   },
   divider: {
     alignSelf: 'stretch',
-    height: 'auto',
-    margin: theme.spacing(0, 2),
+    [theme.breakpoints.down('sm')]: {
+      width: 'auto',
+      margin: theme.spacing(4, 0, 1, 0),
+    },
+    [theme.breakpoints.up('sm')]: {
+      height: 'auto',
+      margin: theme.spacing(0, 2),
+    },
   },
 }))
 
@@ -29,12 +36,17 @@ const PageLayout = ({ render, ...otherProps }: PageLayoutProps) => {
   return (
     <Container maxWidth="md">
       <Paper className={classes.paper}>
-        <Grid container alignItems="center">
-          <Grid item xs>
+        <Grid container>
+          <Grid item xs={12} sm>
             {render({ setQrCodeText })}
           </Grid>
-          <Divider orientation="vertical" className={classes.divider} />
-          <Grid item xs>
+          <Hidden smUp>
+            <Divider variant="middle" className={classes.divider} />
+          </Hidden>
+          <Hidden xsDown>
+            <Divider orientation="vertical" className={classes.divider} />
+          </Hidden>
+          <Grid item xs={12} sm>
             <QRCodeCanvas text={qrCodeText} />
           </Grid>
         </Grid>
