@@ -21,7 +21,6 @@ function ContactForm(props: ContactFormProps) {
       `FN:${values.firstName} ${values.lastName}`,
       `TITLE:${values.title}`,
       `ORG:${values.company}`,
-      'PHOTO;VALUE=URI;TYPE=JPEG:https://avatars0.githubusercontent.com/u/7128101?s=460&v=4',
       `TEL;WORK;VOICE:${values.phone}`,
       `EMAIL;TYPE=WORK:${values.email}`,
       `URL;TYPE=Homepage:${values.homepage}`,
