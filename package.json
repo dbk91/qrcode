@@ -1,6 +1,6 @@
 {
   "name": "query-qr",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A static site that generates useful QR codes",
   "main": "index.js",
   "repository": {
