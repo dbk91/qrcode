@@ -47,7 +47,7 @@ function WifiForm(props: WifiFormProps) {
       'WIFI:',
       `T:${values.authType};`,
       `S:${escapeString(values.ssid)};`,
-      values.authType === 'nopass' ? '' : `P:${values.password};`,
+      values.authType === 'nopass' ? '' : `P:${escapeString(values.password)};`,
       values.isHidden ? 'H:true;' : '',
       ';',
     ].join('')
