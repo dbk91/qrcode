@@ -29,6 +29,7 @@ const ButtonGroup = ({ name, options, ...otherProps }) => {
       exclusive
       size="small"
       onChange={handleChange}
+      aria-label="Wi-Fi Network Type"
       classes={{
         root: classes.buttonGroup,
       }}
@@ -38,6 +39,7 @@ const ButtonGroup = ({ name, options, ...otherProps }) => {
         <ToggleButton
           key={option.value}
           value={option.value}
+          aria-label={option.value}
           classes={{
             root: classes.button,
           }}
