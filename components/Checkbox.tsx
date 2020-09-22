@@ -19,8 +19,8 @@ const Checkbox = (props: CheckboxProps) => {
         {...props}
         control={
           <MuiCheckbox
-            {...field}
-            defaultChecked={field.value}
+            checked={field.value}
+            onChange={field.onChange}
             color="primary"
             inputProps={{ 'aria-label': props.id }}
           />
