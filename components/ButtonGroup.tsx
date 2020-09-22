@@ -1,26 +1,51 @@
 import React from 'react'
 import { useField } from 'formik'
-import MuiButtonGroup from '@material-ui/core/ButtonGroup'
-import Button from '@material-ui/core/Button'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup'
+import ToggleButton from '@material-ui/lab/ToggleButton'
+
+const useStyles = makeStyles(() => ({
+  buttonGroup: {
+    width: '100%',
+  },
+  button: {
+    flex: '1 1 0',
+  },
+}))
 
 const ButtonGroup = ({ name, options, ...otherProps }) => {
   const [field, meta, helpers] = useField<string>(name)
-  const isSelected = v => v === field.value
+  const classes = useStyles()
+
+  const handleChange = React.useCallback((e, value) => {
+    if (value !== null) {
+      helpers.setValue(value)
+    }
+  }, [])
 
   return (
-    <MuiButtonGroup size="small" {...otherProps}>
+    <ToggleButtonGroup
+      value={field.value}
+      exclusive
+      size="small"
+      onChange={handleChange}
+      classes={{
+        root: classes.buttonGroup,
+      }}
+      {...otherProps}
+    >
       {options.map(option => (
-        <Button
+        <ToggleButton
           key={option.value}
-          onClick={() => void helpers.setValue(option.value)}
-          color={isSelected(option.value) ? 'primary' : 'default'}
-          variant={isSelected(option.value) ? 'contained' : 'outlined'}
+          value={option.value}
+          classes={{
+            root: classes.button,
+          }}
         >
           {option.label}
-        </Button>
+        </ToggleButton>
       ))}
-    </MuiButtonGroup>
+    </ToggleButtonGroup>
   )
 }
 

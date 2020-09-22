@@ -74,7 +74,6 @@ function WifiForm(props: WifiFormProps) {
           <ButtonGroup
             name="authType"
             margin="normal"
-            fullWidth
             options={[
               { value: AuthType.NOPASS, label: 'None' },
               { value: AuthType.WEP, label: 'WEP' },
