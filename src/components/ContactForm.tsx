@@ -4,9 +4,9 @@ import QRCode from 'qrcode'
 import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 
-import TextField from '../components/TextField'
-import ButtonGroup from '../components/ButtonGroup'
-import Checkbox from '../components/Checkbox'
+import TextField from 'components/TextField'
+import ButtonGroup from 'components/ButtonGroup'
+import Checkbox from 'components/Checkbox'
 import useStyles from './SubmitButton.styles'
 
 interface ContactFormProps {

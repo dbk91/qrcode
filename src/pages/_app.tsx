@@ -15,8 +15,8 @@ import GithubIcon from '@material-ui/icons/GitHub'
 import LightThemeIcon from '@material-ui/icons/Brightness7'
 import DarkThemeIcon from '@material-ui/icons/Brightness4'
 
-import createTheme, { ThemeType } from '../src/theme'
-import useLocalStorage from '../src/useLocalStorage'
+import createTheme, { ThemeType } from 'theme'
+import useLocalStorage from 'useLocalStorage'
 import './app.css'
 
 const useStyles = makeStyles(theme => ({
