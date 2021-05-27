@@ -11,7 +11,7 @@ import ImageIcon from '@material-ui/icons/Image'
 import SaveIcon from '@material-ui/icons/Save'
 import TextFormat from '@material-ui/icons/TextFormat'
 
-import useClipboard from '../src/useClipboard'
+import useClipboard from 'useClipboard'
 
 interface QRCodeCanvasProps {
   text: string

@@ -3,11 +3,11 @@ import { Formik, Form, FormikErrors } from 'formik'
 import QRCode from 'qrcode'
 import Button from '@material-ui/core/Button'
 
-import TextField from '../components/TextField'
-import ButtonGroup from '../components/ButtonGroup'
-import Checkbox from '../components/Checkbox'
+import TextField from 'components/TextField'
+import ButtonGroup from 'components/ButtonGroup'
+import Checkbox from 'components/Checkbox'
+import escapeString from 'escapeString'
 import useStyles from './SubmitButton.styles'
-import escapeString from '../src/escapeString'
 
 interface WifiFormProps {
   onSuccess: (text: string) => void
@@ -74,7 +74,6 @@ function WifiForm(props: WifiFormProps) {
           <ButtonGroup
             name="authType"
             margin="normal"
-            fullWidth
             options={[
               { value: AuthType.NOPASS, label: 'None' },
               { value: AuthType.WEP, label: 'WEP' },
