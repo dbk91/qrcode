@@ -80,15 +80,15 @@ function WifiForm(props: WifiFormProps) {
               { value: AuthType.WPA, label: 'WPA/WPA2' },
             ]}
           />
-          {values.authType !== 'nopass' && (
-            <TextField
-              id="password"
-              name="password"
-              label="Wi-Fi Network Password"
-              type="password"
-              fullWidth
-            />
-          )}
+          <TextField
+            id="password"
+            name="password"
+            label="Wi-Fi Network Password"
+            type="password"
+            disabled={values.authType === AuthType.NOPASS}
+            helperText={values.authType === AuthType.NOPASS ? 'Password is not included in unprotected Wi-Fi networks' : undefined}
+            fullWidth
+          />
           <Checkbox name="isHidden" id="is-hidden-network" label="Is Hidden Network" />
           <Button
             variant="contained"

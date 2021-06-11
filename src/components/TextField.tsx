@@ -22,6 +22,7 @@ const TextField = ({
   showPassword: showPasswordProp,
   togglePassword: togglePasswordProp,
   disabled,
+  helperText,
   ...props
 }: Omit<TextFieldProps, 'variant'>) => {
   const [field, meta] = useField<string>(props.name)
@@ -55,7 +56,7 @@ const TextField = ({
       margin="normal"
       size="small"
       error={isTouched && Boolean(fieldError)}
-      helperText={isTouched && fieldError}
+      helperText={helperText ?? (isTouched && fieldError)}
       disabled={isDisabled}
       {...props}
       type={type}
