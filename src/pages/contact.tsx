@@ -1,8 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
 
+import Layout from 'components/Layout'
 import PageLayout from 'components/PageLayout'
 import ContactForm from 'components/ContactForm'
+
+import type { ReactElement } from 'react'
 
 function ContactPage() {
   return (
@@ -12,6 +15,14 @@ function ContactPage() {
       </Head>
       <PageLayout render={({ setQrCodeText }) => <ContactForm onSuccess={setQrCodeText} />} />
     </>
+  )
+}
+
+ContactPage.getLayout = (page: ReactElement) => {
+  return (
+    <Layout>
+      {page}
+    </Layout>
   )
 }
 
